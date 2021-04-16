@@ -94,3 +94,16 @@ SELECT Comment
 FROM Theaters.Review AS R JOIN Theaters.List AS L
 ON R.ListId = L.ListId
 WHERE AccountId = 1;
+
+
+--H DISPLAY ALL MOVIES THAT PLAY IN THE NEXT 7 DAYS
+
+--i display all movies in between 2 given dates
+
+--j add a helpful vote to a movie review
+
+--k display customers who have written most reviews for fantasy movies
+
+--l display all customers purchasing history/receipts
+
+--m display all seat numbers for those who need delivery within the next hour
