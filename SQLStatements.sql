@@ -38,6 +38,7 @@ SELECT * FROM Theaters.Review;
 
 
 --b Display all movies from a customer's watch list
+;
 
 WITH AccountWatchList (FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList) AS
 (
@@ -47,11 +48,10 @@ WITH AccountWatchList (FirstName, LastName, NickName, Email, Phone, ViewedMovie,
 )
 
 SELECT NickName, WatchList 
-FROM AccountWatchList;
-
+FROM AccountWatchList
 
 --c display all movies a customer has already viewed
-
+go
 WITH AccountViewedMovies (FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList) AS
 (
 	SELECT FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList
@@ -98,12 +98,17 @@ WHERE AccountId = 1;
 
 --H DISPLAY ALL MOVIES THAT PLAY IN THE NEXT 7 DAYS
 
+
+
 --i display all movies in between 2 given dates
+SELECT * FROM Theaters.Movie
+WHERE ShowDate = '2021-01-10';
 
 --j add a helpful vote to a movie review
 
 --k display customers who have written most reviews for fantasy movies
 
 --l display all customers purchasing history/receipts
+SELECT * FROM Sales.Receipt;
 
 --m display all seat numbers for those who need delivery within the next hour
