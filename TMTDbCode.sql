@@ -60,13 +60,14 @@ CREATE TABLE Sales.Receipt
 (
 	ReceiptId INT NOT NULL IDENTITY,
 	AccountId INT NOT NULL, 
+	MerchandiseId INT NOT NULL,
 	TicketId INT NOT NULL,
 	Email NVARCHAR(1000) NOT NULL, 
 	Reminder NVARCHAR(1000) NOT NULL,
 	CONSTRAINT PK_Receipt PRIMARY KEY(ReceiptId),
 	CONSTRAINT FK_Receipt_Account FOREIGN KEY(AccountId) REFERENCES Sales.Account(AccountId),
-	CONSTRAINT FK_Receipt_Ticket FOREIGN KEY(TicketId) REFERENCES Sales.Ticket(TicketId)
-
+	CONSTRAINT FK_Receipt_Ticket FOREIGN KEY(TicketId) REFERENCES Sales.Ticket(TicketId),
+	CONSTRAINT FK_Receipt_Merchandise FOREIGN KEY(MerchandiseId) REFERENCES Sales.Merchandise(MerchandiseId)
 );
 
 

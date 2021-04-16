@@ -38,19 +38,19 @@ INSERT INTO Sales.Merchandise (Photo, FoodName, SouvenirName, Price)
 
 SELECT * FROM Sales.Merchandise;
 
-INSERT INTO Sales.Receipt(AccountId, TicketId, Email, Reminder)
-	VALUES ('1', '2', 'jjatkins@cougars.edu', 'Email Confirmation: Your movie begins at 10:00 am!'),
-			('2', '3', 'ainthaluexay1@cougars.edu', 'SMS Confirmation: Your movie begins at 7:00 pm!'),
-			('3', '4', 'dpayne@cougars.edu', 'Email Confirmation: Your movie begins at 11:00 pm!'),
-			('4', '1', 'jmeinkoth@cougars.edu', 'SMS Confirmation: Your movie begins at 9:00 pm.'),
-			('5', '2', 'mcape@cougars.edu', 'Email Confirmation: Your movie begins at 10:00 am!')
+INSERT INTO Sales.Receipt(AccountId, MerchandiseId, TicketId, Email, Reminder)
+	VALUES (1, 1, 2, 'jjatkins@cougars.edu', 'Email Confirmation: Your movie begins at 10:00 am!'),
+			(2, 2, 3, 'ainthaluexay1@cougars.edu', 'SMS Confirmation: Your movie begins at 7:00 pm!'),
+			(3, 3, 4, 'dpayne@cougars.edu', 'Email Confirmation: Your movie begins at 11:00 pm!'),
+			(4, 3, 1, 'jmeinkoth@cougars.edu', 'SMS Confirmation: Your movie begins at 9:00 pm.'),
+			(5, 4, 2, 'mcape@cougars.edu', 'Email Confirmation: Your movie begins at 10:00 am!')
 
 SELECT * FROM Sales.Receipt;
 
 
 INSERT INTO Theaters.Movie(RoomId, Title, ReleaseDate, AgeRating, Genre, ShowDate, ShowTime, Runtime,
 	CountryOrigin, MovieLanguage, ProductionCo, Storyline, Review)
-	VALUES (3, 'Godzilla King of Monsters', '03-26-2021', 'PG-13', 'Action', '03-26-2021', '11:00:00', '1 Hrs. 45 Mins.', 'Canada',
+	VALUES (3, 'Godzilla King of Monsters', '04-26-2021', 'PG-13', 'Action', '03-26-2021', '11:00:00', '1 Hrs. 45 Mins.', 'Canada',
 			'English', 'Vancouver Productions', '"Godzilla proves he is the king."', 'Great action film!'),
 		   (2, 'Captain Underpants', '01-10-2021', 'G', 'Family', '01-10-2021', '02:00:00', '1 Hrs. 15 Mins.', 'America',
 		   'English, Spanish', 'Werner Bros', 'Principal on the loose.', 'Hilarious kids movie.'),
@@ -58,9 +58,9 @@ INSERT INTO Theaters.Movie(RoomId, Title, ReleaseDate, AgeRating, Genre, ShowDat
 		   'Vietnamese, English', 'Banh Mi Productions', 'Raya is the ultimate fighting princess!', 'Great representation.'),
 		   (4, 'Justice League', '06-29-2021', 'R', 'Action/Fighting', '06-29-2021', '22:00:00', '2 Hrs. 15 Mins.', 'Japan', 
 		   'Japanese, English', 'Japan Productions', 'Your favorite DC characters save the world.', 'Wow, what a movie!'),
-		   (5, 'Wall-E', '06-09-2017', 'G', 'Family', '06-09-2017', '12:00:00', '1 Hrs. 15 Mins.', 'Germany', 
+		   (5, 'Wall-E', '06-09-2017', 'G', 'Family', '04-19-2021', '12:00:00', '1 Hrs. 15 Mins.', 'Germany', 
 		   'German, English', 'Pixar', 'The future is Wall-E.', 'Wall-E is so good!'),
-		   (2, 'Flora & Ulysses', '08-29-2021', 'G', 'Comedy', '08-29-2021', '17:00:00', '1 Hrs. 03 Mins.', 'America', 
+		   (2, 'Flora & Ulysses', '08-29-2021', 'G', 'Comedy', '04-29-2021', '17:00:00', '1 Hrs. 03 Mins.', 'America', 
 		   'English', 'DisneyPixar', 'The story of two unimaginable friends.', 'So sweet.')
 
 SELECT* FROM Theaters.Movie;

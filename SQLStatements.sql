@@ -104,6 +104,10 @@ WHERE AccountId = 1;
 SELECT * FROM Theaters.Movie
 WHERE ShowDate = '2021-01-10';
 
+SELECT Title, AgeRating, ShowDate, Storyline
+FROM Theaters.Movie
+WHERE ShowDate BETWEEN '2021-01-01'AND '2021-04-30';
+
 --j add a helpful vote to a movie review
 
 --k display customers who have written most reviews for fantasy movies
@@ -118,7 +122,24 @@ WITH FantasyReviewList (FirstName, LastName, NickName, Email, Phone, ViewedMovie
 SELECT NickName
 FROM FantasyReviewList;
 
+GO
+WITH FantasyReviewList (FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList) AS
+(
+	SELECT FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList
+	FROM Sales.Account
+	WHERE AccountId = 3
+)
+
+SELECT NickName
+FROM FantasyReviewList;
+
 --l display all customers purchasing history/receipts
 SELECT * FROM Sales.Account;
+
+SELECT A.AccountId, Nickname, R.TicketId, MovieTitle, FoodName, SouvenirName
+FROM Sales.Merchandise AS M JOIN Sales.Receipt AS R
+ON M.MerchandiseId = R.MerchandiseId
+JOIN Sales.Account AS A ON A.AccountId = R.AccountId
+JOIN Sales.Ticket AS T ON T.TicketId = R.TicketId;
 
 --m display all seat numbers for those who need delivery within the next hour
