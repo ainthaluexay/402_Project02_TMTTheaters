@@ -107,8 +107,18 @@ WHERE ShowDate = '2021-01-10';
 --j add a helpful vote to a movie review
 
 --k display customers who have written most reviews for fantasy movies
+go
+WITH FantasyReviewList (FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList) AS
+(
+	SELECT FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList
+	FROM Sales.Account
+	WHERE AccountId = 3
+)
+
+SELECT NickName
+FROM FantasyReviewList;
 
 --l display all customers purchasing history/receipts
-SELECT * FROM Sales.Receipt;
+SELECT * FROM Sales.Account;
 
 --m display all seat numbers for those who need delivery within the next hour
