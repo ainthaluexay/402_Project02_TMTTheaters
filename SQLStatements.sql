@@ -101,8 +101,6 @@ WHERE AccountId = 1;
 
 
 --i display all movies in between 2 given dates
-SELECT * FROM Theaters.Movie
-WHERE ShowDate = '2021-01-10';
 
 SELECT Title, AgeRating, ShowDate, Storyline
 FROM Theaters.Movie
