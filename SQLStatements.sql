@@ -98,6 +98,12 @@ WHERE AccountId = 1;
 
 --H DISPLAY ALL MOVIES THAT PLAY IN THE NEXT 7 DAYS
 
+DECLARE @CurrentDate DATETIME = GETDATE();
+DECLARE @DatePlusWeek DATETIME = GETDATE() + 7;
+
+SELECT *
+FROM Theaters.Movie
+WHERE ShowDate >= @CurrentDate AND ShowDate <= @DatePlusWeek;
 
 
 --i display all movies in between 2 given dates
@@ -108,17 +114,17 @@ WHERE ShowDate BETWEEN '2021-01-01'AND '2021-04-30';
 
 --j add a helpful vote to a movie review
 
---k display customers who have written most reviews for fantasy movies
-go
-WITH FantasyReviewList (FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList) AS
-(
-	SELECT FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList
-	FROM Sales.Account
-	WHERE AccountId = 3
-)
+BEGIN TRANSACTION
+	INSERT INTO Theaters.Review (MovieId, ListId, StarRating, Comment, ReviewDate, Total)
+	VALUES (4, 1, 5, 'Incredible movie. Much better than anything Marvel could ever put out.', '2021-04-17 01:00:00', 3)
+--Rollback to undo
+ROLLBACK TRANSACTION
+--Commit to finalize review
+COMMIT TRANSACTION
 
-SELECT NickName
-FROM FantasyReviewList;
+
+
+--k display customers who have written most reviews for fantasy movies
 
 GO
 WITH FantasyReviewList (FirstName, LastName, NickName, Email, Phone, ViewedMovie, WatchList) AS
@@ -141,3 +147,11 @@ JOIN Sales.Account AS A ON A.AccountId = R.AccountId
 JOIN Sales.Ticket AS T ON T.TicketId = R.TicketId;
 
 --m display all seat numbers for those who need delivery within the next hour
+
+SELECT A.FirstName, A.LastName, R.Reminder, T.RoomId, T.Seat
+FROM Sales.Receipt AS R JOIN Sales.Merchandise AS M
+ON R.MerchandiseId = M.MerchandiseId
+JOIN Sales.Account AS A
+ON R.AccountId = A.AccountId
+JOIN Sales.Ticket AS T
+ON R.TicketId = T.TicketId
